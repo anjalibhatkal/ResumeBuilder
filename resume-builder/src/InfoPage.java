@@ -186,13 +186,15 @@ public class InfoPage implements ActionListener {
 		exitButton1.addActionListener(this);
 		nextButton1.addActionListener(this);
 	}
-	public void exitAction(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		String fnameString = fnameText.getText();
 		String lnameString = lnameText.getText();
 		String cityString = cityText.getText();
 		String stateString = stateText.getText();
-		int zipCode = zipcodeText.getText();
-		int phoneNumber = phoneText.getText();
+		int zipCode =  Integer.parseInt(zipcodeText.getText());
+		int phoneNumber = Integer.parseInt(phoneText.getText());
 		String emailString = emailText.getText();
+		
+		
 	}
 }
