@@ -1,31 +1,28 @@
-import java.awt.Color;
-import java.awt.EventQueue;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JPanel;
+public class SkillsInfo implements ActionListener{
 
-public class SkillsInfo {
+	public JFrame frame5;
+	private JTextField skill1text, skill2text, skill3text, skill4text, skill5text;
+	private JLabel page4ExtraLabel, page4Label, skillsLabel, lblSkill, lblSkill_1, lblSkill_3, lblSkill_2;
+	private JPanel panel;
+	private JButton exitButton5, addButton5, nextButton5, backButton5;
+	public String skill1String, skill2String, skill3String, skill4String, skill5String;
+	public int counter = 0, var;
 
-	private JFrame frame;
-	private JTextField skill1text;
-	private JTextField skill2text;
-	private JTextField skill3text;
-	private JTextField skill4text;
-	private JTextField skill5text;
-
-	/**
-	 * Launch the application.
-	 */
+	public int ClickCounter(int count){
+			return ++counter;
+	}
+	
+	// Launch the application.
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					SkillsInfo window = new SkillsInfo();
-					window.frame.setVisible(true);
+					window.frame5.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,35 +38,35 @@ public class SkillsInfo {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frame5.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(79, 176, 198));
-		frame.getContentPane().setForeground(new Color(79, 176, 198));
-		frame.setBounds(100, 100, 901, 550);
-		frame.getContentPane().setLayout(null);
+		frame5 = new JFrame();
+		frame5.getContentPane().setBackground(new Color(79, 176, 198));
+		frame5.getContentPane().setForeground(new Color(79, 176, 198));
+		frame5.setBounds(100, 100, 901, 550);
+		frame5.getContentPane().setLayout(null);
 		
-		JLabel page4ExtraLabel = new JLabel("What skills do you want to highlight?");
+		page4ExtraLabel = new JLabel("What skills do you want to highlight?");
 		page4ExtraLabel.setForeground(Color.WHITE);
 		page4ExtraLabel.setFont(new Font("Arial", Font.PLAIN, 19));
 		page4ExtraLabel.setBounds(287, 37, 316, 42);
-		frame.getContentPane().add(page4ExtraLabel);
+		frame5.getContentPane().add(page4ExtraLabel);
 		
-		JLabel page4Label = new JLabel("SKILLS");
+		page4Label = new JLabel("SKILLS");
 		page4Label.setForeground(Color.BLACK);
 		page4Label.setFont(new Font("Arial Black", Font.PLAIN, 30));
 		page4Label.setBackground(Color.BLACK);
 		page4Label.setBounds(371, 1, 131, 55);
-		frame.getContentPane().add(page4Label);
+		frame5.getContentPane().add(page4Label);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(new Color(146, 207, 220));
 		panel.setBounds(15, 89, 856, 409);
-		frame.getContentPane().add(panel);
+		frame5.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel skillsLabel = new JLabel("Skill");
+		skillsLabel = new JLabel("Skill");
 		skillsLabel.setForeground(Color.BLACK);
 		skillsLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		skillsLabel.setBackground(Color.BLACK);
@@ -81,7 +78,7 @@ public class SkillsInfo {
 		skill1text.setBounds(25, 41, 620, 38);
 		panel.add(skill1text);
 		
-		JLabel lblSkill = new JLabel("Skill");
+		lblSkill = new JLabel("Skill");
 		lblSkill.setForeground(Color.BLACK);
 		lblSkill.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		lblSkill.setBackground(Color.BLACK);
@@ -93,7 +90,7 @@ public class SkillsInfo {
 		skill2text.setBounds(25, 110, 620, 38);
 		panel.add(skill2text);
 		
-		JLabel lblSkill_1 = new JLabel("Skill");
+		lblSkill_1 = new JLabel("Skill");
 		lblSkill_1.setForeground(Color.BLACK);
 		lblSkill_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		lblSkill_1.setBackground(Color.BLACK);
@@ -105,7 +102,7 @@ public class SkillsInfo {
 		skill3text.setBounds(25, 192, 620, 38);
 		panel.add(skill3text);
 		
-		JLabel lblSkill_2 = new JLabel("Skill");
+		lblSkill_2 = new JLabel("Skill");
 		lblSkill_2.setForeground(Color.BLACK);
 		lblSkill_2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		lblSkill_2.setBackground(Color.BLACK);
@@ -117,7 +114,7 @@ public class SkillsInfo {
 		skill4text.setBounds(25, 271, 620, 38);
 		panel.add(skill4text);
 		
-		JLabel lblSkill_3 = new JLabel("Skill");
+		lblSkill_3 = new JLabel("Skill");
 		lblSkill_3.setForeground(Color.BLACK);
 		lblSkill_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		lblSkill_3.setBackground(Color.BLACK);
@@ -129,33 +126,95 @@ public class SkillsInfo {
 		skill5text.setBounds(25, 349, 620, 38);
 		panel.add(skill5text);
 		
-		JButton exitButton4 = new JButton("EXIT");
-		exitButton4.setForeground(Color.BLACK);
-		exitButton4.setFont(new Font("Arial", Font.PLAIN, 19));
-		exitButton4.setBackground(new Color(215, 248, 254));
-		exitButton4.setBounds(663, 349, 171, 38);
-		panel.add(exitButton4);
+		exitButton5 = new JButton("EXIT");
+		exitButton5.setForeground(Color.BLACK);
+		exitButton5.setFont(new Font("Arial", Font.PLAIN, 19));
+		exitButton5.setBackground(new Color(215, 248, 254));
+		exitButton5.setBounds(663, 349, 171, 38);
+		panel.add(exitButton5);
 		
-		JButton nextButton4 = new JButton("NEXT");
-		nextButton4.setForeground(Color.BLACK);
-		nextButton4.setFont(new Font("Arial", Font.PLAIN, 19));
-		nextButton4.setBackground(new Color(215, 248, 254));
-		nextButton4.setBounds(663, 295, 171, 38);
-		panel.add(nextButton4);
+		nextButton5 = new JButton("NEXT");
+		nextButton5.setForeground(Color.BLACK);
+		nextButton5.setFont(new Font("Arial", Font.PLAIN, 19));
+		nextButton5.setBackground(new Color(215, 248, 254));
+		nextButton5.setBounds(663, 295, 171, 38);
+		panel.add(nextButton5);
 		
-		JButton backButton4 = new JButton("BACK");
-		backButton4.setForeground(Color.BLACK);
-		backButton4.setFont(new Font("Arial", Font.PLAIN, 19));
-		backButton4.setBackground(new Color(215, 248, 254));
-		backButton4.setBounds(663, 242, 171, 38);
-		panel.add(backButton4);
+		backButton5 = new JButton("BACK");
+		backButton5.setForeground(Color.BLACK);
+		backButton5.setFont(new Font("Arial", Font.PLAIN, 19));
+		backButton5.setBackground(new Color(215, 248, 254));
+		backButton5.setBounds(663, 242, 171, 38);
+		panel.add(backButton5);
 		
-		JButton addButton4 = new JButton("ADD");
-		addButton4.setForeground(Color.BLACK);
-		addButton4.setFont(new Font("Arial", Font.PLAIN, 19));
-		addButton4.setBackground(new Color(215, 248, 254));
-		addButton4.setBounds(663, 189, 171, 38);
-		panel.add(addButton4);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addButton5 = new JButton("ADD");
+		addButton5.setForeground(Color.BLACK);
+		addButton5.setFont(new Font("Arial", Font.PLAIN, 19));
+		addButton5.setBackground(new Color(215, 248, 254));
+		addButton5.setBounds(663, 189, 171, 38);
+		panel.add(addButton5);
+		frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// adding action listeners to the buttons for a click event
+		addButton5.addActionListener(this);
+		backButton5.addActionListener(this);
+		exitButton5.addActionListener(this);
+		nextButton5.addActionListener(this);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e5) {
+		if (e5.getSource() == exitButton5) {
+			System.exit(0);
+		}
+		else if (e5.getSource() == nextButton5) {
+			downloadResume dr = new downloadResume();
+			dr.frame6.setVisible(true);
+			frame5.dispose();
+		}
+		else if (e5.getSource() == backButton5) {
+			LanguagesInfo li = new LanguagesInfo();
+			li.frame4.setVisible(true);
+			frame5.dispose();
+		}
+		else if (e5.getSource() == addButton5) {
+			var = ClickCounter(counter);
+			switch (var) {
+			case 1:
+					skill1String=skill1text.getText();
+					if (skill1String=="") {
+						JOptionPane.showMessageDialog(addButton5, "Tell us a skill you know!", "Alert", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else {
+						skill1text.setEditable(false);
+						skill2text.setEditable(true);
+						skill2text.requestFocus();
+					}
+					break;
+			case 2: 
+					skill2String=skill1text.getText();
+					skill2text.setEditable(false);
+					skill3text.setEditable(true);
+					skill3text.requestFocus();
+					break;
+			case 3:
+					skill3String=skill1text.getText();
+					skill3text.setEditable(false);
+					skill4text.setEditable(true);
+					skill4text.requestFocus();
+					break;
+			case 4: 
+					skill4String=skill1text.getText();
+					skill4text.setEditable(false);
+					skill5text.setEditable(true);
+					skill5text.requestFocus();
+					break;
+			case 5: 
+					skill5String=skill1text.getText();
+					skill5text.setEditable(false);
+					break;
+			default : JOptionPane.showMessageDialog(addButton5, "Thank you for your details!", "Message", JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
 	}
 }
