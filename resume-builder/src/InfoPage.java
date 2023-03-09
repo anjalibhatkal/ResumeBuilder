@@ -176,14 +176,14 @@ public class InfoPage implements ActionListener {
 		nextButton1.addActionListener(this);
 		
 		// storing the inputs to required variables
-		fnameString = fnameText.getText();
-		lnameString = lnameText.getText();
-		profString = profText.getText();
-		cityString = cityText.getText();
-		stateString = stateText.getText();
-		zipCode =  Integer.parseInt(zipcodeText.getText());
-		phoneNumber = Integer.parseInt(phoneText.getText());
-		emailString = emailText.getText();
+//		fnameString = fnameText.getText();
+//		lnameString = lnameText.getText();
+//		profString = profText.getText();
+//		cityString = cityText.getText();
+//		stateString = stateText.getText();
+//		zipCode =  Integer.parseInt(zipcodeText.getText());
+//		phoneNumber = Integer.parseInt(phoneText.getText());
+//		emailString = emailText.getText();
 	}
 
 	@Override
