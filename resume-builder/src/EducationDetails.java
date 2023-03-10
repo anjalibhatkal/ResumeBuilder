@@ -83,11 +83,35 @@ public class EducationDetails implements ActionListener {
 		SchoolLocationLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		SchoolLocationLabel.setBackground(Color.BLACK);
 		SchoolLocationLabel.setBounds(403, 21, 136, 31);
+		schoolnametText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK  ) {
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    schoolnametText.setText(" ");
+                }
+            }
+		});
 		panel2.add(SchoolLocationLabel);
 		
 		schoollocText = new JTextField();
 		schoollocText.setColumns(10);
 		schoollocText.setBounds(403, 48, 415, 31);
+		schoollocText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) ||Character.isDigit(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    schoollocText.setText(" ");
+                }
+            }
+		});
 		panel2.add(schoollocText);
 		
 		degreeLabel = new JLabel("Degree\r\n");
@@ -100,6 +124,18 @@ public class EducationDetails implements ActionListener {
 		degreeText = new JTextField();
 		degreeText.setColumns(10);
 		degreeText.setBounds(20, 118, 798, 31);
+		degreeText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK  ) {
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    degreeText.setText(" ");
+                }
+            }
+		});
 		panel2.add(degreeText);
 		
 		fieldOfStudyLabel = new JLabel("Field of Study");
@@ -112,6 +148,18 @@ public class EducationDetails implements ActionListener {
 		fostudyText = new JTextField();
 		fostudyText.setColumns(10);
 		fostudyText.setBounds(20, 187, 798, 31);
+		fostudyText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK  ) {
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    fostudyText.setText(" ");
+                }
+            }
+		});
 		panel2.add(fostudyText);
 		
 		gdstartDate = new JLabel("Graduation Start Date");
@@ -192,9 +240,17 @@ public class EducationDetails implements ActionListener {
 			gstartString = dateFormat.format(selectedDate1);
 			gendString = dateFormat.format(selectedDate2);
 			
-			WorkInfo wi = new WorkInfo();
-			wi.frame3.setVisible(true);
-			frame2.dispose();
+			if (schoolnameString.isEmpty() || schoollocString.isEmpty() || degreeString.isEmpty() || fosString.isEmpty() || gstartString.isEmpty() || gendString.isEmpty()) {
+			    JOptionPane.showMessageDialog(null, "Please fill in all the details!", "Message", JOptionPane.INFORMATION_MESSAGE);
+			}
+
+			else {
+				pdfGenerator.EducationInit(schoolnameString, schoollocString, degreeString, fosString, gstartString, gendString);
+				WorkInfo wi = new WorkInfo();
+				wi.frame3.setVisible(true);
+				frame2.dispose();
+
+			}
 		}
 		else if (e2.getSource()==backButton2) {
 			InfoPage ip = new InfoPage();

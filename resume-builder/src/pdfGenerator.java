@@ -9,23 +9,77 @@ import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-
 import java.io.FileNotFoundException;
 
-public class hii {
-    public static void main(String[] args) throws FileNotFoundException {
-//            Generate_Pdf("Ankith","M S","abc","Tiptur","Karnataka",572201,"9380029903","akihthshadakshari","java","c++","Python","cpp","gfd","english","kannada","hindi","marati","konkani","senior executive","wipro","bengaluru","karnataka","2019","present","i'm very good at working","Tagore","Tiptur","Engineering","math","2015","2019");
+public class pdfGenerator {
+	public static String fname, lname, prof, city, state, zipcode, phoneno, email;
+	public static String sname, sloc, degree, fos, sstart, send;
+	public static String job, employer, jcity, jstate, jstart, jend, workdes;
+	public static String lang1, lang2, lang3, lang4, lang5;
+	public static String skill1, skill2, skill3, skill4, skill5, filename;
+	
+    public void main(String[] args) throws FileNotFoundException {
     }
-
-    static Cell getheadertextvalue(String val){
+    
+    @SuppressWarnings("deprecation")
+	static Cell getheadertextvalue(String val){
         return new Cell().add(val).setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f);
     }
 
-    static Cell getheaderbold(String val){
+    @SuppressWarnings("deprecation")
+	static Cell getheaderbold(String val){
         return new Cell().add(val).setBold().setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f);
     }
-    public static void Generate_Pdf(String fname,String lname,String prof,String city,String state,String zipcode,String phoneno,String email,String skill1,String skill2,String skill3,String skill4,String skill5,String lang1,String lang2,String lang3,String lang4,String lang5,String job,String employer,String jcity,String jstate,String jstart,String jend,String workdes,String sname,String sloc,String degree,String fos,String sstart,String send) throws FileNotFoundException {
-        String path ="anki.pdf";
+    public pdfGenerator() throws FileNotFoundException{
+		Generate_Pdf();
+	}
+    
+    public static void InformationInit(String fname1,String lname1,String prof1,String city1,String state1,String zipcode1,String phoneno1,String email1) {
+    	fname=fname1;
+    	lname=lname1;
+    	prof=prof1;
+    	city=city1;
+    	state=state1;
+    	zipcode=zipcode1;
+    	phoneno=phoneno1;
+    	email=email1;
+    }
+    public static void EducationInit(String sname1,String sloc1,String degree1,String fos1,String sstart1,String send1) {
+    	sname=sname1;
+    	sloc=sloc1;
+    	degree=degree1;
+    	fos=fos1;
+    	sstart=sstart1;
+    	send=send1;
+    }
+    public static void WorkInit(String job1,String employer1,String jcity1,String jstate1,String jstart1,String jend1,String workdes1) {
+    	job=job1;
+    	employer=employer1;
+    	jcity=jcity1;
+    	jstate=jstate1;
+    	jstart=jstart1;
+    	jend=jend1;
+    	workdes=workdes1;
+    }
+    public static void LanguagesInit(String lang1o,String lang2o,String lang3o,String lang4o,String lang5o) {
+    	lang1=lang1o;
+    	lang2=lang2o;
+    	lang3=lang3o;
+    	lang4=lang4o;
+    	lang5=lang5o;
+    }
+    public static void SkillsInit(String skill1o,String skill2o,String skill3o,String skill4o,String skill5o) {
+    	skill1=skill1o;
+    	skill2=skill2o;
+    	skill3=skill3o;
+    	skill4=skill4o;
+    	skill5=skill5o;
+    }
+    public static void DownloadInit(String filename1) {
+    	filename=filename1;
+    }
+    public static void Generate_Pdf() throws FileNotFoundException {
+        String path = filename+".pdf";
         PdfWriter pdfWriter=new PdfWriter(path);
         PdfDocument pdfDocument=new PdfDocument(pdfWriter);
         pdfDocument.setDefaultPageSize(PageSize.A4);
@@ -52,8 +106,6 @@ public class hii {
         nestedtable.addCell(getheadertextvalue(phoneno));
         nestedtable.addCell(getheaderbold("E-mail"));
         nestedtable.addCell(getheadertextvalue(email));
-        //nestedtable.addCell(getheaderbold("LinkedIn"));
-        //nestedtable.addCell(getheadertextvalue("ebeduvchbcu"));
         nestedtable.addCell(new Cell().add(onesp).setBorder(Border.NO_BORDER));
         nestedtable.addCell(getheaderbold("Skills").setFontSize(15f).setBackgroundColor(new DeviceRgb(0,46,88)));
         nestedtable.addCell(getheadertextvalue(skill1));
@@ -73,7 +125,7 @@ public class hii {
 
 
         Table nt=new Table(new float[]{twocol150});
-        nt.addCell(new Cell().add("IT Professional with over 10 years of experience specializing in IT Department management for international logistic companies. I can implement effective It strategies at local and global levels. My greatest strength is business awareness, which enables me to permanently streamline infrastructure and applications. Striving to leverage my IT management skills at SanCorp Inc.").setBorder(Border.NO_BORDER));
+        nt.addCell(new Cell().add("I’m a "+prof+" with a good experience in the "+ fos +" field. I have a strong track record of "+skill1+", "+skill2+". I have good communication and leadership skills. I’m a motivated individual with strong problem-solving skills and I have a keen interest in staying up-to-date with the latest developments in the tech industry. In my free time, I like to listen to music, read books, learn any new language and cook.").setBorder(Border.NO_BORDER));
 
         nt.addCell(new Cell().add(onesp).setBorder(Border.NO_BORDER));
         nt.addCell(new Cell().add("Experience").setFontSize(15f).setBold().setFontColor(new DeviceRgb(31,77,120)).setBorder(Border.NO_BORDER));
@@ -94,9 +146,10 @@ public class hii {
 
 
         document.close();
-        System.out.println("pdf generated");
+        System.out.println("PDF generated");
     }
 }
+
 
 
 

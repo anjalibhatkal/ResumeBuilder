@@ -9,7 +9,7 @@ public class LanguagesInfo implements ActionListener{
 	private JLabel page5extra, page5label, lang1, lang2, lang3, lang4, lang5;
 	private JPanel panel4;
 	private JButton exitButton4, nextButton4, backButton4, addButton4;
-	public String lang1String, lang2String, lang3String, lang4String, lang5String;
+	public String lang1String="", lang2String="", lang3String="", lang4String="", lang5String="";
 	public int counter = 0, var;
 
 	public int ClickCounter(int count){
@@ -73,6 +73,18 @@ public class LanguagesInfo implements ActionListener{
 		lang1text = new JTextField();
 		lang1text.setColumns(10);
 		lang1text.setBounds(25, 41, 620, 38);
+		lang1text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    lang1text.setText(" ");
+                }
+            }
+		});
 		panel4.add(lang1text);
 		
 		lang2 = new JLabel("Language");
@@ -85,6 +97,18 @@ public class LanguagesInfo implements ActionListener{
 		lang2text = new JTextField();
 		lang2text.setColumns(10);
 		lang2text.setBounds(25, 110, 620, 38);
+		lang2text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    lang2text.setText(" ");
+                }
+            }
+		});
 		panel4.add(lang2text);
 		
 		lang3 = new JLabel("Language");
@@ -97,6 +121,18 @@ public class LanguagesInfo implements ActionListener{
 		lang3text = new JTextField();
 		lang3text.setColumns(10);
 		lang3text.setBounds(25, 192, 620, 38);
+		lang3text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    lang3text.setText(" ");
+                }
+            }
+		});
 		panel4.add(lang3text);
 		
 		lang4 = new JLabel("Language");
@@ -109,6 +145,18 @@ public class LanguagesInfo implements ActionListener{
 		lang4text = new JTextField();
 		lang4text.setColumns(10);
 		lang4text.setBounds(25, 271, 620, 38);
+		lang4text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    lang4text.setText(" ");
+                }
+            }
+		});
 		panel4.add(lang4text);
 		
 		lang5 = new JLabel("Language");
@@ -121,6 +169,20 @@ public class LanguagesInfo implements ActionListener{
 		lang5text = new JTextField();
 		lang5text.setColumns(10);
 		lang5text.setBounds(25, 349, 620, 38);
+		lang5text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    lang5text.setText(" ");
+                }
+
+
+            }
+		});
 		panel4.add(lang5text);
 		
 		exitButton4 = new JButton("EXIT");
@@ -169,9 +231,20 @@ public class LanguagesInfo implements ActionListener{
 			System.exit(0);
 		}
 		else if (e4.getSource() == nextButton4) {
-			SkillsInfo si = new SkillsInfo();
-			si.frame5.setVisible(true);
-			frame4.dispose();
+			lang1String=lang1text.getText();
+			lang2String=lang2text.getText();
+			lang3String=lang3text.getText();
+			lang4String=lang4text.getText();
+			lang5String=lang5text.getText();
+			if ((lang1String.isEmpty())) {
+				JOptionPane.showMessageDialog(null, "Please enter at least one Language!", "Message", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					pdfGenerator.LanguagesInit(lang1String, lang2String, lang3String, lang4String, lang5String);
+					SkillsInfo si = new SkillsInfo();
+					si.frame5.setVisible(true);
+					frame4.dispose();
+			}
 		}
 		else if (e4.getSource()== backButton4) {
 			WorkInfo wi = new WorkInfo();

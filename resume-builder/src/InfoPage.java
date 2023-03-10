@@ -83,11 +83,8 @@ public class InfoPage implements ActionListener {
                     fnameText.setText(" ");
                 }
             }
-});
+		});
 		panel1.add(fnameText);
-		
-		
-		
 		
 		lnameLabel = new JLabel("Last Name");
 		lnameLabel.setBackground(new Color(0, 0, 0));
@@ -111,9 +108,8 @@ public class InfoPage implements ActionListener {
                     lnameText.setText(" ");
                 }
             }
-});
+		});
 		panel1.add(lnameText);
-		
 		
 		professionLabel = new JLabel("Profession");
 		professionLabel.setBackground(new Color(0, 0, 0));
@@ -179,8 +175,6 @@ public class InfoPage implements ActionListener {
 });
 		panel1.add(cityText);
 		
-		
-		
 		stateText = new JTextField();
 		stateText.setColumns(10);
 		stateText.setBounds(277, 187, 255, 31);
@@ -204,27 +198,23 @@ public class InfoPage implements ActionListener {
 		zipcodeText.setColumns(10);
 		zipcodeText.setBounds(542, 187, 276, 31);
 		//To allow only number inputs
-				zipcodeText.addKeyListener(new KeyAdapter(){
-				            public void keyPressed(KeyEvent e){
+		zipcodeText.addKeyListener(new KeyAdapter(){
+		            public void keyPressed(KeyEvent e){
 
-				                char ch = e.getKeyChar();
-				                if(Character.isDigit(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE ||e.isShiftDown()){
-				                }
-				                else{
-				                    JOptionPane.showMessageDialog(null, "Only numbers are allowed!");
-				                    zipcodeText.setText(" ");
-				                }
-				            }
-				});
-						
-		
+		                char ch = e.getKeyChar();
+		                if(Character.isDigit(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE ||e.isShiftDown()){
+		                }
+		                else{
+		                    JOptionPane.showMessageDialog(null, "Only numbers are allowed!");
+		                    zipcodeText.setText(" ");
+		                }
+		            }
+		});
 		panel1.add(zipcodeText);
-		
 
 		phoneText = new JTextField();
 		phoneText.setColumns(10);
 		phoneText.setBounds(20, 254, 374, 31);
-		
 		//To allow only number inputs
 		phoneText.addKeyListener(new KeyAdapter(){
             public void keyPressed(KeyEvent e){
@@ -237,7 +227,7 @@ public class InfoPage implements ActionListener {
                     phoneText.setText(" ");
                 }
             }
-});
+		});
 		
 		panel1.add(phoneText);
 		
@@ -291,6 +281,7 @@ public class InfoPage implements ActionListener {
 			
 		//storing the inputs to required variables
 		fnameString = fnameText.getText();
+		fnameText.setText(fnameString);
 		lnameString = lnameText.getText();
 		profString = profText.getText();
 		cityString = cityText.getText();
@@ -299,10 +290,9 @@ public class InfoPage implements ActionListener {
 		phoneNumber = phoneText.getText();
 		emailString = emailText.getText();
 		
-		//changes
 		if ((fnameString.isEmpty()) || (lnameString.isEmpty()) || (profString.isEmpty()) || (cityString.isEmpty()) ||(zipCode.isEmpty()) || (phoneNumber.isEmpty())||(stateString.isEmpty()) || (emailString.isEmpty())) {
 			JOptionPane.showMessageDialog(nextButton1, "Please fill in all the details!", "Message", JOptionPane.INFORMATION_MESSAGE);
-  	}
+		}
 		else if (!isValidZipcode(zipCode)) {
 			JOptionPane.showMessageDialog(null, "Invalid Zip Code", "Error", JOptionPane.ERROR_MESSAGE);
             zipcodeText.setText("");
@@ -315,25 +305,23 @@ public class InfoPage implements ActionListener {
             JOptionPane.showMessageDialog(null, "Invalid email address", "Error", JOptionPane.ERROR_MESSAGE);
             emailText.setText("");
 		}
-	
 		else {
+			pdfGenerator.InformationInit(fnameString, lnameString, profString, cityString, stateString, zipCode, phoneNumber, emailString);
 			EducationDetails ed = new EducationDetails();
 			ed.frame2.setVisible(true);
 			frame.dispose();
 		}
 		
-		
-		
 	}
 	}
-	//Change
-	//Function for email Validation
+	
+	// function for email Validation
 	public boolean isValidEmail(String email) {
         // Regular expression to validate email format
         String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-        // Check if email matches the regular expression
+        // check if email matches the regular expression
         System.out.println(email.matches(regex));
         return email.matches(regex);
     }
@@ -347,7 +335,6 @@ public class InfoPage implements ActionListener {
 
 	    // match the pattern against the input phone number
 	    Matcher matcher = pattern.matcher(phoneNumber);
-
 	    // return true if the phone number matches the pattern, false otherwise
 	    return matcher.matches();
 	}

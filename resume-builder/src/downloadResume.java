@@ -11,6 +11,7 @@ public class downloadResume implements ActionListener{
 	private JLabel page6label, filenamelabel;
 	private JPanel panel;
 	private JButton exitButton6, dwldbutton6;
+	String filename;
 
 	// Launch the application.
 	public static void main(String[] args) {
@@ -89,27 +90,24 @@ public class downloadResume implements ActionListener{
 		}
 		else if (e6.getSource() == dwldbutton6) {
 			// to download pdf
-			InfoPage ip2 = new InfoPage();
-			EducationDetails ed2 = new EducationDetails();
-			WorkInfo wi2 = new WorkInfo();
-			SkillsInfo si2 = new SkillsInfo();
-			LanguagesInfo li2 = new LanguagesInfo();
-			
+			filename = fileNameText.getText();
+			pdfGenerator.DownloadInit(filename);
 			try {
-				hii.Generate_Pdf(ip2.fnameString, ip2.lnameString, ip2.profString, ip2.cityString, ip2.stateString, ip2.zipCode, ip2.phoneNumber, ip2.emailString, si2.skill1String, si2.skill2String, si2.skill3String, si2.skill4String, si2.skill5String, li2.lang1String, li2.lang2String, li2.lang3String, li2.lang4String, li2.lang5String, wi2.jobString, wi2.employerString, wi2.cityworkString, wi2.stateworkString, wi2.jobstartString, wi2.jobendString, wi2.workdesString, ed2.schoolnameString, ed2.schoollocString, ed2.degreeString, ed2.fosString, ed2.gstartString, ed2.gendString);
-			} catch (FileNotFoundException e) {
+				@SuppressWarnings("unused")
+				pdfGenerator ob = new pdfGenerator();
+			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e1.printStackTrace();
 			}
-//			String path = "anki.pdf";
-//	        File file = new File(path);
-//            try {
-//                Desktop.getDesktop().open(file);
-//            }
-//            catch (java.io.IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			
+			// opening the PDF file with the default application
+			String path = filename+".pdf";
+			File file = new File(path);
+			try {
+			    Desktop.getDesktop().open(file);
+			} catch (java.io.IOException e) {
+			    e.printStackTrace();
+			}
 		}
 	}
 }
