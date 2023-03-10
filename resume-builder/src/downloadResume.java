@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.io.FileNotFoundException;
 public class downloadResume implements ActionListener{
 
 	public JFrame frame6;
@@ -87,8 +88,7 @@ public class downloadResume implements ActionListener{
 		if (e6.getSource() == exitButton6) {
 			System.exit(0);
 		}
-		else if (e6.getSource() == dwldbutton6) {
-			
+		else if (e6.getSource() == dwldbutton6) {			
 			filenameString=fileNameText.getText();
 			
 			if ((filenameString.isEmpty())) {
@@ -121,8 +121,28 @@ public class downloadResume implements ActionListener{
 				
 				// to download the file
 			}
+			// to download pdf
+			InfoPage ip2 = new InfoPage();
+			EducationDetails ed2 = new EducationDetails();
+			WorkInfo wi2 = new WorkInfo();
+			SkillsInfo si2 = new SkillsInfo();
+			LanguagesInfo li2 = new LanguagesInfo();
 			
-			
+			try {
+				hii.Generate_Pdf(ip2.fnameString, ip2.lnameString, ip2.profString, ip2.cityString, ip2.stateString, ip2.zipCode, ip2.phoneNumber, ip2.emailString, si2.skill1String, si2.skill2String, si2.skill3String, si2.skill4String, si2.skill5String, li2.lang1String, li2.lang2String, li2.lang3String, li2.lang4String, li2.lang5String, wi2.jobString, wi2.employerString, wi2.cityworkString, wi2.stateworkString, wi2.jobstartString, wi2.jobendString, wi2.workdesString, ed2.schoolnameString, ed2.schoollocString, ed2.degreeString, ed2.fosString, ed2.gstartString, ed2.gendString);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//			String path = "anki.pdf";
+//	        File file = new File(path);
+//            try {
+//                Desktop.getDesktop().open(file);
+//            }
+//            catch (java.io.IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		}
 		}
 	

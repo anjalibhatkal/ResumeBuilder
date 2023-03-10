@@ -12,7 +12,6 @@ public class InfoPage implements ActionListener {
 	private JPanel panel1;
 	private JButton exitButton1,nextButton1;
 	public String fnameString, lnameString, profString, cityString, stateString,emailString;
-	//changed int to string
 	public String zipCode, phoneNumber;
 	
 	// Launch the application.
@@ -365,6 +364,7 @@ public class InfoPage implements ActionListener {
 
 	    // return true if the phone number matches the pattern, false otherwise
 	    return matcher.matches();
-	}
-
+	  }
+  }
 }
+

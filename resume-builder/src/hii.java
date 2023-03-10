@@ -1,5 +1,5 @@
 import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.ColorConstants;
+//import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -11,11 +11,10 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class hii {
     public static void main(String[] args) throws FileNotFoundException {
-            Generate_Pdf("Ankith","M S","abc","Tiptur","Karnataka",572201,"9380029903","akihthshadakshari","java","c++","Python","cpp","gfd","english","kannada","hindi","marati","konkani","senior executive","wipro","bengaluru","karnataka","2019","present","i'm very good at working","Tagore","Tiptur","Engineering","math","2015","2019");
+//            Generate_Pdf("Ankith","M S","abc","Tiptur","Karnataka",572201,"9380029903","akihthshadakshari","java","c++","Python","cpp","gfd","english","kannada","hindi","marati","konkani","senior executive","wipro","bengaluru","karnataka","2019","present","i'm very good at working","Tagore","Tiptur","Engineering","math","2015","2019");
     }
 
     static Cell getheadertextvalue(String val){
@@ -97,7 +96,7 @@ public class hii {
         document.close();
         System.out.println("pdf generated");
     }
-    }
+}
 
 
 

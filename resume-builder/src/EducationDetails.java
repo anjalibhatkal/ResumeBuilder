@@ -1,16 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.border.LineBorder;
 
 public class EducationDetails implements ActionListener {
 
 	public JFrame frame2;
-	private JTextField schoolnametText,schoollocText,degreeText,fostudyText,gstartText,gendText;
+	private JTextField schoolnametText,schoollocText,degreeText,fostudyText;
 	private JLabel page2Head, page2Extra, schoolNameLabel, SchoolLocationLabel, degreeLabel, fieldOfStudyLabel, gdstartDate, graduationEndDateLabel;
 	private JButton backButton2, nextButton2, exitButton2;
 	public String schoolnameString, schoollocString, degreeString, fosString, gstartString, gendString;
 	private JPanel panel2;
+	private JDateChooser gstartText, gendText;
+	private Date selectedDate1, selectedDate2;
+	private Calendar minDate1,minDate2,maxDate1,maxDate2;
 	
 	// Launch the application.
 	public static void main(String[] args) {
@@ -163,11 +169,6 @@ public class EducationDetails implements ActionListener {
 		
 		panel2.add(fostudyText);
 		
-		gstartText = new JTextField();
-		gstartText.setColumns(10);
-		gstartText.setBounds(20, 254, 374, 31);
-		panel2.add(gstartText);
-		
 		gdstartDate = new JLabel("Graduation Start Date");
 		gdstartDate.setForeground(Color.BLACK);
 		gdstartDate.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
@@ -181,11 +182,6 @@ public class EducationDetails implements ActionListener {
 		graduationEndDateLabel.setBackground(Color.BLACK);
 		graduationEndDateLabel.setBounds(404, 228, 170, 31);
 		panel2.add(graduationEndDateLabel);
-		
-		gendText = new JTextField();
-		gendText.setColumns(10);
-		gendText.setBounds(404, 254, 415, 31);
-		panel2.add(gendText);
 		
 		backButton2 = new JButton("BACK");
 		backButton2.setForeground(Color.BLACK);
@@ -208,12 +204,28 @@ public class EducationDetails implements ActionListener {
 		exitButton2.setBounds(330, 314, 171, 38);
 		panel2.add(exitButton2);
 		
+		gstartText = new JDateChooser();
+		minDate1 = Calendar.getInstance();
+		minDate1.set(1970, Calendar.JANUARY, 1); // set minimum date to Jan 1, 1970
+		maxDate1 = Calendar.getInstance();
+		maxDate1.set(2023, Calendar.DECEMBER, 31); // set maximum date to Dec 31, 2023
+		gstartText.setSelectableDateRange(minDate1.getTime(), maxDate1.getTime());
+		gstartText.setBounds(20, 254, 373, 38);
+		panel2.add(gstartText);
+		
+		gendText = new JDateChooser();
+		minDate2 = Calendar.getInstance();
+		minDate2.set(1973, Calendar.JANUARY, 1); // set minimum date to Jan 1, 1973
+		maxDate2 = Calendar.getInstance();
+		maxDate2.set(2023, Calendar.DECEMBER, 31); // set maximum date to Dec 31, 2023
+		gstartText.setSelectableDateRange(minDate2.getTime(), maxDate2.getTime());
+		gendText.setBounds(403, 254, 415, 38);
+		panel2.add(gendText);
+		
 		// adding action listeners to the buttons for a click event
 		backButton2.addActionListener(this);
 		exitButton2.addActionListener(this);
 		nextButton2.addActionListener(this);
-		
-		
 	}
 	
 	@Override
@@ -223,6 +235,7 @@ public class EducationDetails implements ActionListener {
 		}
 		else if (e2.getSource() == nextButton2) {
 			
+		else if (e2.getSource() == nextButton2) {	
 			
 			// storing the inputs to required variables
 			schoolnameString = schoolnametText.getText();
@@ -242,6 +255,15 @@ public class EducationDetails implements ActionListener {
 				frame2.dispose();
 				
 			}
+			selectedDate1 = gstartText.getDate();
+			selectedDate2 = gendText.getDate();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			gstartString = dateFormat.format(selectedDate1);
+			gendString = dateFormat.format(selectedDate2);
+			
+			WorkInfo wi = new WorkInfo();
+			wi.frame3.setVisible(true);
+			frame2.dispose();
 		}
 		else if (e2.getSource()==backButton2) {
 			
