@@ -76,6 +76,20 @@ public class SkillsInfo implements ActionListener{
 		skill1text = new JTextField();
 		skill1text.setColumns(10);
 		skill1text.setBounds(25, 41, 620, 38);
+		skill1text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    skill1text.setText(" ");
+                }
+
+               
+            }
+});
 		panel.add(skill1text);
 		
 		lblSkill = new JLabel("Skill");
@@ -88,6 +102,20 @@ public class SkillsInfo implements ActionListener{
 		skill2text = new JTextField();
 		skill2text.setColumns(10);
 		skill2text.setBounds(25, 110, 620, 38);
+		skill2text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    skill2text.setText(" ");
+                }
+
+               
+            }
+});
 		panel.add(skill2text);
 		
 		lblSkill_1 = new JLabel("Skill");
@@ -100,6 +128,20 @@ public class SkillsInfo implements ActionListener{
 		skill3text = new JTextField();
 		skill3text.setColumns(10);
 		skill3text.setBounds(25, 192, 620, 38);
+		skill3text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    skill3text.setText(" ");
+                }
+
+               
+            }
+});
 		panel.add(skill3text);
 		
 		lblSkill_2 = new JLabel("Skill");
@@ -112,6 +154,20 @@ public class SkillsInfo implements ActionListener{
 		skill4text = new JTextField();
 		skill4text.setColumns(10);
 		skill4text.setBounds(25, 271, 620, 38);
+		skill4text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    skill4text.setText(" ");
+                }
+
+               
+            }
+});
 		panel.add(skill4text);
 		
 		lblSkill_3 = new JLabel("Skill");
@@ -124,6 +180,21 @@ public class SkillsInfo implements ActionListener{
 		skill5text = new JTextField();
 		skill5text.setColumns(10);
 		skill5text.setBounds(25, 349, 620, 38);
+		
+		skill5text.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    skill5text.setText(" ");
+                }
+
+               
+            }
+});
 		panel.add(skill5text);
 		
 		exitButton5 = new JButton("EXIT");
@@ -168,9 +239,21 @@ public class SkillsInfo implements ActionListener{
 			System.exit(0);
 		}
 		else if (e5.getSource() == nextButton5) {
+			
+			skill1String = skill1text.getText();
+			skill2String = skill2text.getText();
+			skill3String = skill3text.getText();
+			skill4String = skill4text.getText();
+			skill5String = skill5text.getText();
+			
+			if ((skill1String.isEmpty())) {
+			JOptionPane.showMessageDialog(null, "Please enter at least one Skill!", "Message", JOptionPane.INFORMATION_MESSAGE);
+			}
+			else {
 			downloadResume dr = new downloadResume();
 			dr.frame6.setVisible(true);
 			frame5.dispose();
+		}
 		}
 		else if (e5.getSource() == backButton5) {
 			LanguagesInfo li = new LanguagesInfo();

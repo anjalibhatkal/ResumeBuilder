@@ -70,6 +70,20 @@ public class WorkInfo implements ActionListener{
 		jobText = new JTextField();
 		jobText.setColumns(10);
 		jobText.setBounds(20, 48, 373, 31);
+		
+		jobText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    jobText.setText(" ");
+                }
+
+            }
+});
 		panel3.add(jobText);
 		
 		employerLabel = new JLabel("Employer");
@@ -77,11 +91,26 @@ public class WorkInfo implements ActionListener{
 		employerLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		employerLabel.setBackground(Color.BLACK);
 		employerLabel.setBounds(403, 21, 136, 31);
+		
 		panel3.add(employerLabel);
 		
 		employerText = new JTextField();
 		employerText.setColumns(10);
 		employerText.setBounds(403, 48, 415, 31);
+		employerText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    employerText.setText(" ");
+                }
+
+            }
+});
+
 		panel3.add(employerText);
 		
 		cityLabel = new JLabel("City");
@@ -94,6 +123,21 @@ public class WorkInfo implements ActionListener{
 		cityText = new JTextField();
 		cityText.setColumns(10);
 		cityText.setBounds(20, 118, 373, 31);
+		
+		cityText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    cityText.setText(" ");
+                }
+
+            }
+});
+
 		panel3.add(cityText);
 		
 		stateLabel = new JLabel("State");
@@ -106,11 +150,29 @@ public class WorkInfo implements ActionListener{
 		stateText = new JTextField();
 		stateText.setColumns(10);
 		stateText.setBounds(403, 118, 415, 31);
+		
+		
+		stateText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if (Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK || e.isShiftDown()) {
+                    // Do nothing
+                } else {
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    stateText.setText(" ");
+                }
+
+               
+            }
+});
 		panel3.add(stateText);
 		
 		jobstartText = new JTextField();
 		jobstartText.setColumns(10);
 		jobstartText.setBounds(20, 185, 374, 31);
+		
+		
 		panel3.add(jobstartText);
 		
 		jobstartDate = new JLabel("Start Date");
@@ -171,13 +233,7 @@ public class WorkInfo implements ActionListener{
 		nextButton3.addActionListener(this);
 		
 		// storing the inputs to required variables
-		jobString = jobText.getText();
-		employerString = employerText.getText();
-		cityworkString = cityText.getText();
-		stateworkString = stateText.getText();
-		jobstartString = jobstartText.getText();
-		jobendString = jobendText.getText();
-		workdesString = workdesText.getText();
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e3) {
@@ -185,11 +241,37 @@ public class WorkInfo implements ActionListener{
 			System.exit(0);
 		}
 		else if (e3.getSource() == nextButton3) {
+			
+			jobString = jobText.getText();
+			employerString = employerText.getText();
+			cityworkString = cityText.getText();
+			stateworkString = stateText.getText();
+			jobstartString = jobstartText.getText();
+			jobendString = jobendText.getText();
+			workdesString = workdesText.getText();
+			
+			if (jobString.isEmpty() || employerString.isEmpty() || cityworkString.isEmpty() || stateworkString.isEmpty() || jobstartString.isEmpty() || jobendString.isEmpty()||workdesString.isEmpty()) {
+			    JOptionPane.showMessageDialog(null, "Please fill in all the details!", "Message", JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+			else {
+			
 			LanguagesInfo li = new LanguagesInfo();
 			li.frame4.setVisible(true);
 			frame3.dispose();
+			}
+			
 		}
 		else if (e3.getSource()== backButton3) {
+			
+			jobString = jobText.getText();
+			employerString = employerText.getText();
+			cityworkString = cityText.getText();
+			stateworkString = stateText.getText();
+			jobstartString = jobstartText.getText();
+			jobendString = jobendText.getText();
+			workdesString = workdesText.getText();
+			
 			EducationDetails ed = new EducationDetails();
 			ed.frame2.setVisible(true);
 			frame3.dispose();

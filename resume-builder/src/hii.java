@@ -25,7 +25,7 @@ public class hii {
     static Cell getheaderbold(String val){
         return new Cell().add(val).setBold().setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f);
     }
-    public static void Generate_Pdf(String fname,String lname,String prof,String city,String state,int zipcode,String phoneno,String email,String skill1,String skill2,String skill3,String skill4,String skill5,String lang1,String lang2,String lang3,String lang4,String lang5,String job,String employer,String jcity,String jstate,String jstart,String jend,String workdes,String sname,String sloc,String degree,String fos,String sstart,String send) throws FileNotFoundException {
+    public static void Generate_Pdf(String fname,String lname,String prof,String city,String state,String zipcode,String phoneno,String email,String skill1,String skill2,String skill3,String skill4,String skill5,String lang1,String lang2,String lang3,String lang4,String lang5,String job,String employer,String jcity,String jstate,String jstart,String jend,String workdes,String sname,String sloc,String degree,String fos,String sstart,String send) throws FileNotFoundException {
         String path ="anki.pdf";
         PdfWriter pdfWriter=new PdfWriter(path);
         PdfDocument pdfDocument=new PdfDocument(pdfWriter);

@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.LineBorder;
+import java.util.regex.*;
 
 public class InfoPage implements ActionListener {
 
@@ -11,7 +12,8 @@ public class InfoPage implements ActionListener {
 	private JPanel panel1;
 	private JButton exitButton1,nextButton1;
 	public String fnameString, lnameString, profString, cityString, stateString,emailString;
-	public int zipCode, phoneNumber;
+	//changed int to string
+	public String zipCode, phoneNumber;
 	
 	// Launch the application.
 	public static void main(String[] args) {
@@ -69,9 +71,24 @@ public class InfoPage implements ActionListener {
 		panel1.add(fnameLabel);
 		
 		fnameText = new JTextField();
-		fnameText.setBounds(20, 48, 373, 31);
-		panel1.add(fnameText);
 		fnameText.setColumns(10);
+		fnameText.setBounds(20, 48, 373, 31);
+		fnameText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    fnameText.setText(" ");
+                }
+            }
+});
+		panel1.add(fnameText);
+		
+		
+		
 		
 		lnameLabel = new JLabel("Last Name");
 		lnameLabel.setBackground(new Color(0, 0, 0));
@@ -83,7 +100,21 @@ public class InfoPage implements ActionListener {
 		lnameText = new JTextField();
 		lnameText.setColumns(10);
 		lnameText.setBounds(403, 48, 415, 31);
+		
+		lnameText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    lnameText.setText(" ");
+                }
+            }
+});
 		panel1.add(lnameText);
+		
 		
 		professionLabel = new JLabel("Profession");
 		professionLabel.setBackground(new Color(0, 0, 0));
@@ -95,6 +126,19 @@ public class InfoPage implements ActionListener {
 		profText = new JTextField();
 		profText.setColumns(10);
 		profText.setBounds(20, 118, 798, 31);
+		
+		profText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    profText.setText(" ");
+                }
+            }
+});
 		panel1.add(profText);
 		
 		JLabel cityLabel = new JLabel("City/Town/District");
@@ -121,21 +165,81 @@ public class InfoPage implements ActionListener {
 		cityText = new JTextField();
 		cityText.setColumns(10);
 		cityText.setBounds(20, 187, 247, 31);
+		
+		cityText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+                    cityText.setText(" ");
+                }
+            }
+});
 		panel1.add(cityText);
+		
+		
 		
 		stateText = new JTextField();
 		stateText.setColumns(10);
 		stateText.setBounds(277, 187, 255, 31);
+		//To allow only number inputs
+		stateText.addKeyListener(new KeyAdapter(){
+		            public void keyPressed(KeyEvent e){
+
+		                char ch = e.getKeyChar();
+		                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+		                }
+		                else{
+		                    JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
+		                    stateText.setText(" ");
+		                }
+		            }
+		});
+				
 		panel1.add(stateText);
 		
 		zipcodeText = new JTextField();
 		zipcodeText.setColumns(10);
 		zipcodeText.setBounds(542, 187, 276, 31);
+		//To allow only number inputs
+				zipcodeText.addKeyListener(new KeyAdapter(){
+				            public void keyPressed(KeyEvent e){
+
+				                char ch = e.getKeyChar();
+				                if(Character.isDigit(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE ||e.isShiftDown()){
+				                }
+				                else{
+				                    JOptionPane.showMessageDialog(null, "Only numbers are allowed!");
+				                    zipcodeText.setText(" ");
+				                }
+				            }
+				});
+						
+		
 		panel1.add(zipcodeText);
 		
+
 		phoneText = new JTextField();
 		phoneText.setColumns(10);
 		phoneText.setBounds(20, 254, 374, 31);
+		
+		//To allow only number inputs
+		phoneText.addKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+
+                char ch = e.getKeyChar();
+                if(Character.isDigit(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE ||e.isShiftDown()){
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Only numbers are allowed!");
+                    phoneText.setText(" ");
+                }
+            }
+});
+		
 		panel1.add(phoneText);
 		
 		phoneLabel = new JLabel("Phone");
@@ -175,15 +279,7 @@ public class InfoPage implements ActionListener {
 		exitButton1.addActionListener(this);
 		nextButton1.addActionListener(this);
 		
-		// storing the inputs to required variables
-//		fnameString = fnameText.getText();
-//		lnameString = lnameText.getText();
-//		profString = profText.getText();
-//		cityString = cityText.getText();
-//		stateString = stateText.getText();
-//		zipCode =  Integer.parseInt(zipcodeText.getText());
-//		phoneNumber = Integer.parseInt(phoneText.getText());
-//		emailString = emailText.getText();
+
 	}
 
 	@Override
@@ -193,9 +289,82 @@ public class InfoPage implements ActionListener {
 			System.exit(0);
 		}
 		else if (e.getSource() == nextButton1) {
+			
+		//storing the inputs to required variables
+		fnameString = fnameText.getText();
+		lnameString = lnameText.getText();
+		profString = profText.getText();
+		cityString = cityText.getText();
+		stateString = stateText.getText();
+		zipCode =  zipcodeText.getText();
+		phoneNumber = phoneText.getText();
+		emailString = emailText.getText();
+		
+		//changes
+		if ((fnameString.isEmpty()) || (lnameString.isEmpty()) || (profString.isEmpty()) || (cityString.isEmpty()) ||(zipCode.isEmpty()) || (phoneNumber.isEmpty())||(stateString.isEmpty()) || (emailString.isEmpty())) {
+			JOptionPane.showMessageDialog(nextButton1, "Please fill in all the details!", "Message", JOptionPane.INFORMATION_MESSAGE);
+  	}
+		else if (!isValidZipcode(zipCode)) {
+			JOptionPane.showMessageDialog(null, "Invalid Zip Code", "Error", JOptionPane.ERROR_MESSAGE);
+            zipcodeText.setText("");
+		}
+		else if (!isValidPhoneNumber(phoneNumber)) {
+			JOptionPane.showMessageDialog(null, "Invalid Phone Number", "Error", JOptionPane.ERROR_MESSAGE);
+            phoneText.setText("");
+		}
+		else if (!isValidEmail(emailString)) {
+            JOptionPane.showMessageDialog(null, "Invalid email address", "Error", JOptionPane.ERROR_MESSAGE);
+            emailText.setText("");
+		}
+	
+		else {
 			EducationDetails ed = new EducationDetails();
 			ed.frame2.setVisible(true);
 			frame.dispose();
 		}
+		
+		
+		
 	}
+	}
+	//Change
+	//Function for email Validation
+	public boolean isValidEmail(String email) {
+        // Regular expression to validate email format
+        String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        // Check if email matches the regular expression
+        System.out.println(email.matches(regex));
+        return email.matches(regex);
+    }
+	
+	public static boolean isValidPhoneNumber(String phoneNumber) {
+	    // regular expression to match 10-digit phone number
+	    String regex = "\\d{10}";
+
+	    // compile the regular expression into a pattern
+	    Pattern pattern = Pattern.compile(regex);
+
+	    // match the pattern against the input phone number
+	    Matcher matcher = pattern.matcher(phoneNumber);
+
+	    // return true if the phone number matches the pattern, false otherwise
+	    return matcher.matches();
+	}
+	
+	public static boolean isValidZipcode(String zipcode) {
+	    // regular expression to match 10-digit phone number
+	    String regex = "\\d{6}";
+
+	    // compile the regular expression into a pattern
+	    Pattern pattern = Pattern.compile(regex);
+
+	    // match the pattern against the input phone number
+	    Matcher matcher = pattern.matcher(zipcode);
+
+	    // return true if the phone number matches the pattern, false otherwise
+	    return matcher.matches();
+	}
+
 }
