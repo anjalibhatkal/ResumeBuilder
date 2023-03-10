@@ -1,16 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.border.LineBorder;
+import com.toedter.calendar.JDateChooser;
 
 public class WorkInfo implements ActionListener{
 
 	public JFrame frame3;
-	private JTextField jobText, employerText, cityText, stateText, jobstartText, jobendText, workdesText;
+	private JTextField jobText, employerText, cityText, stateText, workdesText;
 	private JLabel page3Label, page3ExtraLabel, jobTitleLabel, employerLabel, cityLabel, stateLabel, jobstartDate, jobendLabel, workdesLabel;
 	private JButton backButton3, nextButton3, exitButton3;
 	public String jobString, employerString, cityworkString, stateworkString, jobstartString, jobendString, workdesString;
 	private JPanel panel3;
+	private JDateChooser jobstartText, jobendText;
+	private Date selectedDate1, selectedDate2;
+	private Calendar minDate1,minDate2,maxDate1,maxDate2;
 	
 	// Launch the application.
 	public static void main(String[] args) {
@@ -108,11 +116,6 @@ public class WorkInfo implements ActionListener{
 		stateText.setBounds(403, 118, 415, 31);
 		panel3.add(stateText);
 		
-		jobstartText = new JTextField();
-		jobstartText.setColumns(10);
-		jobstartText.setBounds(20, 185, 374, 31);
-		panel3.add(jobstartText);
-		
 		jobstartDate = new JLabel("Start Date");
 		jobstartDate.setForeground(Color.BLACK);
 		jobstartDate.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
@@ -126,11 +129,6 @@ public class WorkInfo implements ActionListener{
 		jobendLabel.setBackground(Color.BLACK);
 		jobendLabel.setBounds(404, 159, 170, 31);
 		panel3.add(jobendLabel);
-		
-		jobendText = new JTextField();
-		jobendText.setColumns(10);
-		jobendText.setBounds(403, 185, 415, 31);
-		panel3.add(jobendText);
 		
 		backButton3 = new JButton("BACK");
 		backButton3.setForeground(Color.BLACK);
@@ -165,19 +163,28 @@ public class WorkInfo implements ActionListener{
 		workdesText.setBounds(19, 252, 799, 72);
 		panel3.add(workdesText);
 		
+		jobstartText = new JDateChooser();
+		minDate1 = Calendar.getInstance();
+		minDate1.set(1973, Calendar.JANUARY, 1); // set minimum date to Jan 1, 1970
+		maxDate1 = Calendar.getInstance();
+		maxDate1.set(2023, Calendar.DECEMBER, 31); // set maximum date to Dec 31, 2023
+		jobstartText.setSelectableDateRange(minDate1.getTime(), maxDate1.getTime());
+		jobstartText.setBounds(20, 188, 373, 28);
+		panel3.add(jobstartText);
+		
+		jobendText = new JDateChooser();
+		minDate2 = Calendar.getInstance();
+		minDate2.set(1973, Calendar.JANUARY, 1); // set minimum date to Jan 1, 1970
+		maxDate2 = Calendar.getInstance();
+		maxDate2.set(2023, Calendar.DECEMBER, 31); // set maximum date to Dec 31, 2023
+		jobendText.setSelectableDateRange(minDate2.getTime(), maxDate2.getTime());
+		jobendText.setBounds(403, 188, 415, 31);
+		panel3.add(jobendText);
+		
 		// adding action listeners to the buttons for a click event
 		backButton3.addActionListener(this);
 		exitButton3.addActionListener(this);
 		nextButton3.addActionListener(this);
-		
-		// storing the inputs to required variables
-		jobString = jobText.getText();
-		employerString = employerText.getText();
-		cityworkString = cityText.getText();
-		stateworkString = stateText.getText();
-		jobstartString = jobstartText.getText();
-		jobendString = jobendText.getText();
-		workdesString = workdesText.getText();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e3) {
@@ -185,6 +192,18 @@ public class WorkInfo implements ActionListener{
 			System.exit(0);
 		}
 		else if (e3.getSource() == nextButton3) {
+			//storing the inputs to required variables
+			jobString = jobText.getText();
+			employerString = employerText.getText();
+			cityworkString = cityText.getText();
+			stateworkString = stateText.getText();
+			workdesString = workdesText.getText();
+			selectedDate1 = jobstartText.getDate();
+			selectedDate2 = jobendText.getDate();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			jobstartString = dateFormat.format(selectedDate1);
+			jobendString = dateFormat.format(selectedDate2);
+			
 			LanguagesInfo li = new LanguagesInfo();
 			li.frame4.setVisible(true);
 			frame3.dispose();

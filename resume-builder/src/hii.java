@@ -1,5 +1,5 @@
 import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.ColorConstants;
+//import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -11,11 +11,10 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class hii {
     public static void main(String[] args) throws FileNotFoundException {
-            Generate_Pdf("Ankith","M S","abc","Tiptur","Karnataka",572201,"9380029903","akihthshadakshari","java","c++","Python","cpp","gfd","english","kannada","hindi","marati","konkani","senior executive","wipro","bengaluru","karnataka","2019","present","i'm very good at working","Tagore","Tiptur","Engineering","math","2015","2019");
+//            Generate_Pdf("Ankith","M S","abc","Tiptur","Karnataka",572201,"9380029903","akihthshadakshari","java","c++","Python","cpp","gfd","english","kannada","hindi","marati","konkani","senior executive","wipro","bengaluru","karnataka","2019","present","i'm very good at working","Tagore","Tiptur","Engineering","math","2015","2019");
     }
 
     static Cell getheadertextvalue(String val){
@@ -25,7 +24,7 @@ public class hii {
     static Cell getheaderbold(String val){
         return new Cell().add(val).setBold().setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f);
     }
-    public static void Generate_Pdf(String fname,String lname,String prof,String city,String state,int zipcode,String phoneno,String email,String skill1,String skill2,String skill3,String skill4,String skill5,String lang1,String lang2,String lang3,String lang4,String lang5,String job,String employer,String jcity,String jstate,String jstart,String jend,String workdes,String sname,String sloc,String degree,String fos,String sstart,String send) throws FileNotFoundException {
+    public static void Generate_Pdf(String fname,String lname,String prof,String city,String state,String zipcode,String phoneno,String email,String skill1,String skill2,String skill3,String skill4,String skill5,String lang1,String lang2,String lang3,String lang4,String lang5,String job,String employer,String jcity,String jstate,String jstart,String jend,String workdes,String sname,String sloc,String degree,String fos,String sstart,String send) throws FileNotFoundException {
         String path ="anki.pdf";
         PdfWriter pdfWriter=new PdfWriter(path);
         PdfDocument pdfDocument=new PdfDocument(pdfWriter);
@@ -97,7 +96,7 @@ public class hii {
         document.close();
         System.out.println("pdf generated");
     }
-    }
+}
 
 
 
