@@ -243,10 +243,14 @@ public class SkillsInfo implements ActionListener{
 			skill5String = skill5text.getText();
 			if ((skill1String.isEmpty())) {
 				JOptionPane.showMessageDialog(null, "Please enter at least one Skill!", "Message", JOptionPane.INFORMATION_MESSAGE);
+				skill1text.setEditable(true);
+				counter = 1;
 			}
 			else if ((skill2String.isEmpty()))
 			{
 				JOptionPane.showMessageDialog(null, "Please enter Another Skill!", "Message", JOptionPane.INFORMATION_MESSAGE);
+				skill2text.setEditable(true);
+				counter = 2;
 			}
 			else {	
 			pdfGenerator.SkillsInit(skill1String, skill2String, skill3String, skill4String, skill5String);

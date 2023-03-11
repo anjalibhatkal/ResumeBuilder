@@ -238,6 +238,8 @@ public class LanguagesInfo implements ActionListener{
 			lang5String=lang5text.getText();
 			if ((lang1String.isEmpty())) {
 				JOptionPane.showMessageDialog(null, "Please enter at least one Language!", "Message", JOptionPane.INFORMATION_MESSAGE);
+				lang1text.setEditable(true);
+				counter=1;
 				}
 				else {
 					pdfGenerator.LanguagesInit(lang1String, lang2String, lang3String, lang4String, lang5String);

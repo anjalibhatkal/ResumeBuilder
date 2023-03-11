@@ -9,6 +9,8 @@ import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+
 import java.io.FileNotFoundException;
 
 public class pdfGenerator {
@@ -23,12 +25,12 @@ public class pdfGenerator {
     
     @SuppressWarnings("deprecation")
 	static Cell getheadertextvalue(String val){
-        return new Cell().add(val).setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f);
+        return new Cell().add(val).setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f).setPaddingLeft(10f);
     }
 
     @SuppressWarnings("deprecation")
 	static Cell getheaderbold(String val){
-        return new Cell().add(val).setBold().setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f);
+        return new Cell().add(val).setBold().setBorder(Border.NO_BORDER).setFontColor(Color.WHITE).setFontSize(10f).setPaddingLeft(10f);
     }
     public pdfGenerator() throws FileNotFoundException{
 		Generate_Pdf();
@@ -97,7 +99,7 @@ public class pdfGenerator {
 
 
         nestedtable.addCell(getheaderbold(fname+" "+lname).setFontSize(25f));
-        nestedtable.addCell(getheadertextvalue(job).setFontSize(12f));
+        nestedtable.addCell(getheadertextvalue(prof).setFontSize(12f));
         nestedtable.addCell(new Cell().add(onesp).setBorder(Border.NO_BORDER));
         nestedtable.addCell(getheaderbold("Personal Info").setFontSize(15f).setBackgroundColor(new DeviceRgb(0,46,88)));
         nestedtable.addCell(getheaderbold("Address"));
@@ -125,22 +127,22 @@ public class pdfGenerator {
 
 
         Table nt=new Table(new float[]{twocol150});
-        nt.addCell(new Cell().add("I’m a "+prof+" with a good experience in the "+ fos +" field. I have a strong track record of "+skill1+", "+skill2+". I have good communication and leadership skills. I’m a motivated individual with strong problem-solving skills and I have a keen interest in staying up-to-date with the latest developments in the tech industry. In my free time, I like to listen to music, read books, learn any new language and cook.").setBorder(Border.NO_BORDER));
+        nt.addCell(new Cell().add("I’m a "+prof+" with a good experience in the "+ fos +" field. I have a strong track record of "+skill1+", "+skill2+". I have good communication and leadership skills. I’m a motivated individual with strong problem-solving skills and I have a keen interest in staying up-to-date with the latest developments in the tech industry. In my free time, I like to listen to music, read books, learn any new language and cook.").setBorder(Border.NO_BORDER).setPadding(10f).setTextAlignment(TextAlignment.JUSTIFIED));
 
         nt.addCell(new Cell().add(onesp).setBorder(Border.NO_BORDER));
-        nt.addCell(new Cell().add("Experience").setFontSize(15f).setBold().setFontColor(new DeviceRgb(31,77,120)).setBorder(Border.NO_BORDER));
-        nt.addCell(new Cell().add(job).setBorder(Border.NO_BORDER).setBold().setFontSize(13f));
-        nt.addCell(new Cell().add(employer).setBorder(Border.NO_BORDER).setFontSize(11f));
-        nt.addCell(new Cell().add(jcity+", "+jstate).setBorder(Border.NO_BORDER).setFontSize(11f));
-        nt.addCell(new Cell().add(jstart+"-"+jend).setBorder(Border.NO_BORDER).setFontSize(11f));
-        nt.addCell(new Cell().add(workdes).setBorder(Border.NO_BORDER).setFontSize(11f));
+        nt.addCell(new Cell().add("Experience").setFontSize(15f).setBold().setFontColor(new DeviceRgb(31,77,120)).setBorder(Border.NO_BORDER).setPadding(10f));
+        nt.addCell(new Cell().add(job).setBorder(Border.NO_BORDER).setBold().setFontSize(13f).setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- "+employer).setBorder(Border.NO_BORDER).setFontSize(11f).setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- "+jcity+", "+jstate).setBorder(Border.NO_BORDER).setFontSize(11f).setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- "+jstart+" - "+jend).setBorder(Border.NO_BORDER).setFontSize(11f).setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- "+workdes).setBorder(Border.NO_BORDER).setFontSize(11f).setPaddingLeft(20f).setTextAlignment(TextAlignment.JUSTIFIED));
 
         nt.addCell(new Cell().add(onesp).setBorder(Border.NO_BORDER));
-        nt.addCell(new Cell().add("Education").setFontSize(15f).setFontColor(new DeviceRgb(31,77,120)).setBold().setBorder(Border.NO_BORDER));
-        nt.addCell(new Cell().add(degree).setFontSize(13f).setBorder(Border.NO_BORDER).setBold());
-        nt.addCell(new Cell().add("Studied at"+sname+"\n"+sloc).setFontSize(11f).setBorder(Border.NO_BORDER));
-        nt.addCell(new Cell().add("Field of study"+fos).setFontSize(11f).setBorder(Border.NO_BORDER));
-        nt.addCell(new Cell().add("graduated on "+send).setFontSize(11f).setBorder(Border.NO_BORDER));
+        nt.addCell(new Cell().add("Education").setFontSize(15f).setFontColor(new DeviceRgb(31,77,120)).setBold().setBorder(Border.NO_BORDER).setPadding(10f));
+        nt.addCell(new Cell().add(degree).setFontSize(13f).setBorder(Border.NO_BORDER).setBold().setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- Studied at "+sname+"\n- "+sloc).setFontSize(11f).setBorder(Border.NO_BORDER).setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- Field of study : "+fos).setFontSize(11f).setBorder(Border.NO_BORDER).setPaddingLeft(20f));
+        nt.addCell(new Cell().add("- Graduated on "+send).setFontSize(11f).setBorder(Border.NO_BORDER).setPaddingLeft(20f));
         table.addCell(new Cell().add(nt));
         document.add(table);
 

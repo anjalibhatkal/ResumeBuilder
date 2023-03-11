@@ -87,7 +87,7 @@ public class EducationDetails implements ActionListener {
             public void keyPressed(KeyEvent e){
 
                 char ch = e.getKeyChar();
-                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK  ) {
+                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown() ) {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
@@ -104,7 +104,7 @@ public class EducationDetails implements ActionListener {
             public void keyPressed(KeyEvent e){
 
                 char ch = e.getKeyChar();
-                if(Character.isAlphabetic(ch) ||Character.isDigit(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
+                if(ch=='-'||Character.isAlphabetic(ch) ||Character.isDigit(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()){
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
@@ -128,7 +128,7 @@ public class EducationDetails implements ActionListener {
             public void keyPressed(KeyEvent e){
 
                 char ch = e.getKeyChar();
-                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK  ) {
+                if(ch=='-'|| Character.isAlphabetic(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()||Character.getType(ch) == Character.OTHER_PUNCTUATION || Character.getType(ch) == Character.MATH_SYMBOL) {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
@@ -152,7 +152,7 @@ public class EducationDetails implements ActionListener {
             public void keyPressed(KeyEvent e){
 
                 char ch = e.getKeyChar();
-                if(Character.isAlphabetic(ch) || Character.isWhitespace(ch) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE|| e.getKeyCode() == KeyEvent.VK_CAPS_LOCK  ) {
+                if(ch=='-'|| Character.isAlphabetic(ch) || Character.isWhitespace(ch)|| e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_CAPS_LOCK ||e.isShiftDown()||Character.getType(ch) == Character.OTHER_PUNCTUATION || Character.getType(ch) == Character.MATH_SYMBOL) {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Only alphabets are allowed!");
